@@ -16,8 +16,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Nunito',sans-serif;background:var(--krem);color:var(--text);overflow-x:hidden;}
-
+body{font-family:'Nunito',sans-serif;background-color:var(--krem);background-image:url('hero-bg.jpg');background-size:cover;background-position:center top;background-attachment:fixed;color:var(--text);overflow-x:hidden;position:relative;}body::before{content:'';position:fixed;inset:0;background:rgba(247,243,237,0.83);z-index:0;pointer-events:none;}body>*{position:relative;z-index:1;}
 /* NAV */
 nav{
   position:sticky;top:0;z-index:200;height:62px;
