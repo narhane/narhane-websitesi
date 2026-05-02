@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narhane — Doğal Gıda & Şarküteri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --mint:#c8e6d4;--mint-deep:#6ea882;--mint-light:#eaf5ee;
+  --bordo:#b8174a;--bordo-dark:#7a0f30;--bordo-light:#fce8ef;
+  --krem:#f7f3ed;--krem-warm:#ede6d8;
+  --kahve:#4a3020;--text:#2c1a14;--muted:#7a6560;
+  --white:#fff;--r:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--krem);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:200;height:62px;
+  background:rgba(247,243,237,.96);backdrop-filter:blur(14px);
+  border-bottom:1.5px solid var(--mint);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.25rem;
+}
+.nav-logo img{height:52px;}
+.nav-links{display:flex;gap:2px;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:12.5px;font-weight:700;color:var(--muted);
+  text-decoration:none;padding:6px 9px;border-radius:8px;transition:all .2s;white-space:nowrap;
+}
+.nav-links a:hover{background:var(--mint-light);color:var(--bordo);}
+.nav-wa{background:var(--bordo)!important;color:#fff!important;border-radius:20px!important;padding:7px 14px!important;display:flex!important;align-items:center;gap:5px;}
+.nav-wa:hover{background:var(--bordo-dark)!important;}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;overflow:hidden;padding-bottom:3.5rem;}
+.hero-bg{position:absolute;inset:0;background:url('hero-bg1.png') center top/cover no-repeat;z-index:0;}
+.hero-street{
+  position:absolute;inset:0;
+  background:url('street-bg.jpg') center center/cover no-repeat;
+  z-index:1;
+  opacity:0.35;
+}
+.hero-store{
+  position:absolute;bottom:0;left:0;right:0;height:58%;
+  background:url('hero-bg2.png') center bottom/cover no-repeat;
+  z-index:2;
+  mask-image:linear-gradient(to top,black 55%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to top,black 55%,transparent 100%);
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:3;
+  background:linear-gradient(180deg,rgba(200,230,212,.08) 0%,rgba(247,243,237,0) 35%,rgba(247,243,237,.72) 72%,rgba(247,243,237,1) 100%);
+}
+.hero-content{position:relative;z-index:4;text-align:center;padding:0 1.5rem;display:flex;flex-direction:column;align-items:center;}
+.hero-eye{font-family:'Caveat',cursive;font-size:1.15rem;color:var(--bordo);margin-bottom:.6rem;}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,7.5vw,3.8rem);font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.75rem;}
+.hero-h1 em{font-style:italic;color:var(--bordo);}
+.hero-p{font-size:14px;color:var(--muted);max-width:310px;line-height:1.7;margin-bottom:1.75rem;}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+
+/* BUTTONS */
+.btn{padding:12px 22px;border-radius:50px;font-size:13.5px;font-weight:700;font-family:'Nunito',sans-serif;cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:transform .15s,opacity .15s;}
+.btn:hover{transform:translateY(-2px);opacity:.9;}
+.btn-b{background:var(--bordo);color:#fff;}
+.btn-o{background:transparent;color:var(--bordo);border:2px solid var(--bordo);}
+.btn-w{background:#fff;color:var(--bordo);}
+.btn-g{background:#25d366;color:#fff;}
+.btn-k{background:var(--kahve);color:#fff;}
+.btn-m{background:var(--mint-deep);color:#fff;}
+
+/* TICKER */
+.ticker{background:var(--bordo);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:.5rem 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-block;animation:tick 24s linear infinite;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* SECTION */
+.sec{padding:3rem 1.25rem;}
+.sec-w{background:var(--white);}
+.sec-m{background:var(--mint-light);}
+.sec-k{background:var(--krem);}
+.sh{margin-bottom:1.75rem;}
+.s-eye{font-family:'Caveat',cursive;font-size:1.05rem;color:var(--bordo);display:block;margin-bottom:.15rem;}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,2.1rem);color:var(--text);line-height:1.2;}
+.s-title em{font-style:italic;color:var(--bordo);}
+.s-desc{font-size:13.5px;color:var(--muted);margin-top:.45rem;line-height:1.7;max-width:460px;}
+
+/* ORIGINS BANNER */
+.ob{border-radius:var(--r);overflow:hidden;position:relative;margin-bottom:1.5rem;min-height:175px;}
+.ob img{width:100%;height:195px;object-fit:cover;display:block;}
+.ob-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(44,26,20,.75) 0%,transparent 65%);display:flex;align-items:center;padding:1.5rem;}
+.ob-ov h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;line-height:1.3;}
+.ob-ov p{font-size:12px;color:rgba(255,255,255,.7);margin-top:.3rem;max-width:175px;line-height:1.5;}
+
+/* SLIDER */
+.slw{overflow:hidden;}
+.slt{display:flex;gap:12px;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.oc{min-width:calc(85vw - 2rem);max-width:295px;background:var(--white);border-radius:var(--r);border:1.5px solid var(--krem-warm);flex-shrink:0;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.oc:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(184,23,74,.1);}
+.oc-img{height:170px;overflow:hidden;background:linear-gradient(135deg,var(--krem-warm),var(--mint-light));}
+.oc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.oc:hover .oc-img img{transform:scale(1.06);}
+.oc-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.95rem;color:var(--muted);font-style:italic;}
+.oc-body{padding:.9rem 1rem 1rem;}
+.oc-cat{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--mint-deep);margin-bottom:3px;}
+.oc-name{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--text);margin-bottom:3px;}
+.oc-desc{font-size:12px;color:var(--muted);line-height:1.55;}
+.oc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;}
+.tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--bordo-light);color:var(--bordo);}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:1rem;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--mint);cursor:pointer;transition:all .2s;}
+.dot.on{background:var(--bordo);width:18px;border-radius:3px;}
+
+/* GASTRO */
+.gc{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;margin-bottom:1.25rem;scrollbar-width:none;}
+.gc::-webkit-scrollbar{display:none;}
+.gcb{flex-shrink:0;padding:7px 15px;border-radius:20px;font-size:12px;font-weight:700;font-family:'Nunito',sans-serif;border:1.5px solid var(--mint);background:var(--white);color:var(--muted);cursor:pointer;transition:all .2s;}
+.gcb.on,.gcb:hover{background:var(--bordo);color:#fff;border-color:var(--bordo);}
+.gg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.gcard{background:var(--white);border-radius:var(--r);border:1.5px solid var(--krem-warm);overflow:hidden;transition:transform .2s;}
+.gcard:hover{transform:translateY(-3px);}
+.gci{height:115px;overflow:hidden;background:linear-gradient(135deg,var(--krem-warm),var(--mint-light));}
+.gci img{width:100%;height:100%;object-fit:cover;}
+.gph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted);font-weight:600;font-style:italic;text-align:center;padding:.5rem;}
+.gcb2{padding:.7rem .85rem .85rem;}
+.gn{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.gs{font-size:11px;color:var(--muted);}
+
+/* CATERING BOX */
+.cat-box{background:linear-gradient(135deg,var(--bordo-dark),var(--bordo));border-radius:20px;padding:2.25rem 1.5rem;color:#fff;}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.5rem 0;}
+.cf{background:rgba(255,255,255,.1);border-radius:12px;padding:.9rem;border:1px solid rgba(255,255,255,.12);}
+.cf-i{font-size:1.4rem;margin-bottom:4px;}
+.cf-t{font-size:12.5px;font-weight:700;color:#fff;margin-bottom:2px;}
+.cf-d{font-size:11px;color:rgba(255,255,255,.55);line-height:1.5;}
+
+/* TOGETHER */
+.tgg{display:flex;flex-direction:column;gap:16px;}
+.tgc{background:var(--white);border-radius:var(--r);border:1.5px solid var(--krem-warm);overflow:hidden;}
+.tgh{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem .75rem;border-bottom:1px solid var(--krem-warm);}
+.tgbrand{display:flex;align-items:center;gap:10px;}
+.tglogo{width:42px;height:42px;border-radius:10px;background:var(--krem);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--bordo);border:1.5px solid var(--krem-warm);}
+.tgbn{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--text);}
+.tgbt{font-size:10.5px;color:var(--muted);}
+.tgf{font-size:11px;font-weight:700;color:var(--bordo);text-decoration:none;background:var(--bordo-light);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tgphotos{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:3px;}
+.tgph{aspect-ratio:1;border-radius:7px;overflow:hidden;background:linear-gradient(135deg,var(--krem-warm),var(--mint-light));display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--muted);font-style:italic;min-height:110px;}
+.tgfoot{padding:.75rem 1rem;font-size:12.5px;color:var(--muted);line-height:1.55;font-style:italic;}
+
+/* PLATFORMS */
+.pll{display:flex;flex-direction:column;gap:9px;}
+.pli{display:flex;align-items:center;gap:13px;padding:.9rem 1.1rem;background:var(--white);border-radius:14px;text-decoration:none;border:1.5px solid var(--krem-warm);transition:border-color .15s,transform .15s;}
+.pli:hover{border-color:var(--bordo);transform:translateX(4px);}
+.plico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.plb{flex:1;}
+.pln{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:1px;}
+.pld{font-size:11.5px;color:var(--muted);}
+.pla{color:var(--bordo);font-size:1.1rem;font-weight:700;}
+
+/* CONTACT */
+.ctsec{background:var(--text);padding:3rem 1.25rem 2rem;color:#fff;}
+.ctt{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--mint);margin-bottom:.4rem;}
+.ctd{font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;margin-bottom:1.75rem;}
+.ctlinks{display:flex;flex-direction:column;gap:9px;margin-bottom:2rem;}
+.ctl{display:flex;align-items:center;gap:12px;padding:.9rem 1.1rem;background:rgba(255,255,255,.06);border-radius:13px;text-decoration:none;border:1px solid rgba(255,255,255,.08);transition:background .15s;}
+.ctl:hover{background:rgba(255,255,255,.1);}
+.ctli{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ctll{font-size:10.5px;color:rgba(255,255,255,.4);margin-bottom:1px;}
+.ctlv{font-size:13.5px;font-weight:700;color:#fff;}
+.ctaddr{font-size:12px;color:rgba(255,255,255,.35);line-height:1.75;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.08);}
+.ftcopy{text-align:center;padding:1rem 0 0;font-size:11px;color:rgba(255,255,255,.18);}
+
+/* WA FLOAT */
+.wafab{position:fixed;bottom:1.5rem;right:1.25rem;z-index:300;background:#25d366;color:#fff;border-radius:50px;padding:11px 18px;font-size:13px;font-weight:700;font-family:'Nunito',sans-serif;text-decoration:none;display:flex;align-items:center;gap:7px;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s;}
+.wafab:hover{transform:scale(1.05);}
+
+/* FADE */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .55s,transform .55s;}
+.fi.show{opacity:1;transform:none;}
+
+/* DESKTOP */
+@media(min-width:768px){
+  .oc{min-width:265px;}
+  .gg{grid-template-columns:repeat(3,1fr);}
+  .tgg{display:grid;grid-template-columns:repeat(3,1fr);}
+  nav,.sec{padding-left:2.5rem;padding-right:2.5rem;}
+}
+@media(min-width:1024px){.gg{grid-template-columns:repeat(4,1fr);}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo"><img src="narhane-logo.png" alt="Narhane"></a>
+  <ul class="nav-links">
+    <li><a href="#origins">Origins</a></li>
+    <li><a href="#gastro">Market</a></li>
+    <li><a href="#catering">Catering</a></li>
+    <li><a href="#together">Together</a></li>
+    <li><a href="https://wa.me/905304288986" class="nav-wa" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Sipariş
+    </a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-street"></div>
+  <div class="hero-store"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eye">İstanbul'un doğal gıda durağı ✦</span>
+    <h1 class="hero-h1">Doğadan <em>sofraya,</em><br>her kavanozda<br>gerçek lezzet.</h1>
+    <p class="hero-p">Katkısız, geleneksel ve özenle üretilen Narhane ürünleriyle sofralarınıza bereket taşıyoruz.</p>
+    <div class="hero-btns">
+      <a href="#origins" class="btn btn-b">Ürünleri Keşfet</a>
+      <a href="https://wa.me/905304288986" class="btn btn-o" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+        WhatsApp Sipariş
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="ticker"><span class="ticker-inner">🌿 Katkısız &nbsp;✦&nbsp; El Yapımı &nbsp;✦&nbsp; Geleneksel Tarif &nbsp;✦&nbsp; Doğal Fermente &nbsp;✦&nbsp; Taze Hasat &nbsp;✦&nbsp; Kadıköy'de Üretim &nbsp;✦&nbsp; WhatsApp Sipariş &nbsp;✦&nbsp; 🌿 Katkısız &nbsp;✦&nbsp; El Yapımı &nbsp;✦&nbsp; Geleneksel Tarif &nbsp;✦&nbsp; Doğal Fermente &nbsp;✦&nbsp; Taze Hasat &nbsp;✦&nbsp; Kadıköy'de Üretim &nbsp;✦&nbsp; WhatsApp Sipariş &nbsp;✦&nbsp;</span></div>
+
+<!-- ORIGINS -->
+<section class="sec sec-w fi" id="origins">
+  <div class="sh">
+    <span class="s-eye">Öz Üretim</span>
+    <h2 class="s-title">Narhane <em>Originals</em></h2>
+    <p class="s-desc">Kendi mutfağımızdan, kendi ellerimizden. Her ürün katkısız ve geleneksel yöntemlerle üretiliyor.</p>
+  </div>
+  <div class="ob">
+    <img src="hero-bg2.png" alt="Narhane Originals Ürünler">
+    <div class="ob-ov"><div><h3>Tüm Originals<br>Ürünler</h3><p>Yoğurt · Kaymak · Fermente · Ezme · Homemade</p></div></div>
+  </div>
+  <div class="slw">
+    <div class="slt" id="oSlider">
+      <div class="oc"><div class="oc-img"><img src="fistikezmesi.jpg" alt="Fıstık Ezmesi"></div><div class="oc-body"><div class="oc-cat">Katkısız</div><div class="oc-name">Yer Fıstığı Ezmesi</div><div class="oc-desc">Şeker ilavesiz, saf yer fıstığından. Her kaşıkta güç, her kavanozda doğallık.</div><div class="oc-tags"><span class="tag">Şekersiz</span><span class="tag">Katkısız</span></div></div></div>
+      <div class="oc"><div class="oc-img"><img src="nareksisi.jpg" alt="Nar Ekşisi"></div><div class="oc-body"><div class="oc-cat">Katkısız</div><div class="oc-name">Nar Ekşisi</div><div class="oc-desc">Sadece nar suyundan. Katkısız ve doğal. 340 gr cam şişe.</div><div class="oc-tags"><span class="tag">Doğal</span><span class="tag">Geleneksel</span></div></div></div>
+      <div class="oc"><div class="oc-img"><div class="oc-ph">Yoğurt Çeşitleri</div></div><div class="oc-body"><div class="oc-cat">Yoğurt</div><div class="oc-name">Özel Yoğurtlar</div><div class="oc-desc">Keçi, manda, Jersey ve karışık. Geleneksel bez süzme yöntemi.</div><div class="oc-tags"><span class="tag">Keçi</span><span class="tag">Manda</span><span class="tag">Jersey</span></div></div></div>
+      <div class="oc"><div class="oc-img"><div class="oc-ph">El Yapımı Kaymak</div></div><div class="oc-body"><div class="oc-cat">Kaymak</div><div class="oc-name">El Yapımı Kaymak</div><div class="oc-desc">Manda, Jersey ve karışık. Kahvaltı sofralarının vazgeçilmezi.</div><div class="oc-tags"><span class="tag">Manda</span><span class="tag">Jersey</span></div></div></div>
+      <div class="oc"><div class="oc-img"><div class="oc-ph">Fermente Ürünler</div></div><div class="oc-body"><div class="oc-cat">Fermente</div><div class="oc-name">Sirke & Turşu</div><div class="oc-desc">Elma, üzüm, alıç sirkesi. Erik, lahana, salatalık turşusu.</div><div class="oc-tags"><span class="tag">Probiyotik</span><span class="tag">Doğal</span></div></div></div>
+      <div class="oc"><div class="oc-img"><div class="oc-ph">Homemade</div></div><div class="oc-body"><div class="oc-cat">Homemade</div><div class="oc-name">Ev Yapımı Lezzetler</div><div class="oc-desc">Domates sos, reçel çeşitleri, lutenitsa, şakşuka.</div><div class="oc-tags"><span class="tag">El Yapımı</span><span class="tag">Mevsimlik</span></div></div></div>
+    </div>
+  </div>
+  <div class="dots" id="oDots"></div>
+  <div style="margin-top:1.5rem;text-align:center;">
+    <a href="https://wa.me/905304288986?text=Narhane%20Originals%20ürünleri%20hakkında%20bilgi%20almak%20istiyorum" class="btn btn-b" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Sipariş Ver
+    </a>
+  </div>
+</section>
+
+<!-- GASTRO MARKET -->
+<section class="sec sec-m fi" id="gastro">
+  <div class="sh">
+    <span class="s-eye">Seçkin Gıda</span>
+    <h2 class="s-title">Gastro <em>Market</em></h2>
+    <p class="s-desc">En kaliteli markaların seçkin ürünleri tek çatı altında.</p>
+  </div>
+  <div class="gc">
+    <button class="gcb on" onclick="gf('all',this)">Tümü</button>
+    <button class="gcb" onclick="gf('sut',this)">Süt Ürünleri</button>
+    <button class="gcb" onclick="gf('zeytin',this)">Zeytin</button>
+    <button class="gcb" onclick="gf('bakliyat',this)">Bakliyat</button>
+    <button class="gcb" onclick="gf('cerez',this)">Çerez</button>
+    <button class="gcb" onclick="gf('baharat',this)">Baharat</button>
+    <button class="gcb" onclick="gf('temel',this)">Temel Gıda</button>
+  </div>
+  <div class="gg" id="gGrid">
+    <div class="gcard" data-c="sut"><div class="gci"><div class="gph">Süt & Ürünleri</div></div><div class="gcb2"><div class="gn">Süt Ürünleri</div><div class="gs">Seçkin markalar</div></div></div>
+    <div class="gcard" data-c="zeytin"><div class="gci"><div class="gph">Zeytin</div></div><div class="gcb2"><div class="gn">Zeytin Çeşitleri</div><div class="gs">Sofra zeytinleri</div></div></div>
+    <div class="gcard" data-c="bakliyat"><div class="gci"><div class="gph">Bakliyat</div></div><div class="gcb2"><div class="gn">Bakliyat</div><div class="gs">Nohut, mercimek, fasulye</div></div></div>
+    <div class="gcard" data-c="cerez"><div class="gci"><div class="gph">Çerez</div></div><div class="gcb2"><div class="gn">Kuruyemiş & Çerez</div><div class="gs">Taze ve doğal</div></div></div>
+    <div class="gcard" data-c="baharat"><div class="gci"><div class="gph">Baharat</div></div><div class="gcb2"><div class="gn">Baharat</div><div class="gs">Anadolu aromaları</div></div></div>
+    <div class="gcard" data-c="temel"><div class="gci"><div class="gph">Temel Gıda</div></div><div class="gcb2"><div class="gn">Temel Gıda</div><div class="gs">Günlük ihtiyaçlar</div></div></div>
+  </div>
+  <div style="margin-top:1.5rem;text-align:center;">
+    <a href="https://wa.me/905304288986?text=Gastro%20Market%20ürünleri%20hakkında%20bilgi%20istiyorum" class="btn btn-k" target="_blank">Ürünleri Sorgula</a>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section class="sec sec-k fi" id="catering">
+  <div class="cat-box">
+    <span style="font-family:'Caveat',cursive;font-size:1rem;color:rgba(255,255,255,.5);display:block;margin-bottom:.3rem;">Etkinlik & Hazırlık</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,2rem);color:#fff;margin-bottom:.5rem;">Catering <em style="font-style:italic;color:#fce8ef;">Hizmetleri</em></h2>
+    <p style="font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.65;margin-bottom:1.25rem;">Özel etkinlikleriniz için eksiksiz gıda hazırlığı ve sunum hizmetleri sunuyoruz.</p>
+    <div class="cf-grid">
+      <div class="cf"><div class="cf-i">🎉</div><div class="cf-t">Etkinlik</div><div class="cf-d">Düğün, doğum günü, kurumsal</div></div>
+      <div class="cf"><div class="cf-i">🥗</div><div class="cf-t">Hazırlık</div><div class="cf-d">Önceden hazırlık & paketleme</div></div>
+      <div class="cf"><div class="cf-i">🌿</div><div class="cf-t">Doğal Menü</div><div class="cf-d">Katkısız, taze malzemeler</div></div>
+      <div class="cf"><div class="cf-i">📋</div><div class="cf-t">Kişiselleştirme</div><div class="cf-d">Diyet & tercihe özel tasarım</div></div>
+    </div>
+    <a href="https://wa.me/905304288986?text=Catering%20hizmeti%20için%20teklif%20almak%20istiyorum" target="_blank" class="btn btn-w" style="width:100%;justify-content:center;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      Teklif Al & Bilgi Formu
+    </a>
+  </div>
+</section>
+
+<!-- TOGETHER -->
+<section class="sec sec-w fi" id="together">
+  <div class="sh">
+    <span class="s-eye">Ortak Mutfak</span>
+    <h2 class="s-title">Together — <em>Bir Arada</em></h2>
+    <p class="s-desc">Aynı çatı altında, aynı özenle. Üç bağımsız marka, bir ortak üretim mekânı.</p>
+  </div>
+  <div class="tgg">
+    <div class="tgc">
+      <div class="tgh"><div class="tgbrand"><div class="tglogo">AM</div><div><div class="tgbn">Anne Meze</div><div class="tgbt">El yapımı mezeler</div></div></div><a href="http://annemeze.com" class="tgf" target="_blank">Takip Et</a></div>
+      <div class="tgphotos"><div class="tgph">Nuraniye</div><div class="tgph">Nazuktan</div><div class="tgph">Moral</div><div class="tgph">Mezeler</div></div>
+      <div class="tgfoot">Anadolu'nun en seçkin meze tariflerini, ev sıcaklığında sunuyor.</div>
+    </div>
+    <div class="tgc">
+      <div class="tgh"><div class="tgbrand"><div class="tglogo">ÖG</div><div><div class="tgbn">ÖgEli</div><div class="tgbt">Mayasız tam buğday ekmek</div></div></div><a href="https://www.ogeli.com.tr" class="tgf" target="_blank">Takip Et</a></div>
+      <div class="tgphotos"><div class="tgph">Acı İncir</div><div class="tgph">Cevizli</div><div class="tgph">Kimyon</div><div class="tgph">Soğanlı</div></div>
+      <div class="tgfoot">Mayasız, tam buğday. Dolgun doku, tatmin edici doygunluk.</div>
+    </div>
+    <div class="tgc">
+      <div class="tgh"><div class="tgbrand"><div class="tglogo">KP</div><div><div class="tgbn">Kapra</div><div class="tgbt">Keçi sütü ürünleri</div></div></div><a href="#" class="tgf">Takip Et</a></div>
+      <div class="tgphotos"><div class="tgph">Keçi Peyniri</div><div class="tgph">Keçi Sütü</div><div class="tgph">Ürünler</div><div class="tgph">Kapra</div></div>
+      <div class="tgfoot">Doğal keçi sütünden üretilen, beğeniyle tüketilen ürünler.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMLAR -->
+<section class="sec sec-m fi" id="platformlar">
+  <div class="sh">
+    <span class="s-eye">Nereden sipariş?</span>
+    <h2 class="s-title">Satış <em>Kanalları</em></h2>
+  </div>
+  <div class="pll">
+    <a href="https://wa.me/905304288986" class="pli" target="_blank">
+      <div class="plico" style="background:#e8fdf0;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#25d366" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="plb"><div class="pln">WhatsApp Kataloğu</div><div class="pld">Direkt sipariş ve ürün bilgisi</div></div>
+      <div class="pla">→</div>
+    </a>
+    <a href="https://share.google/jR8LZbyNsTtGgrSt5" class="pli" target="_blank">
+      <div class="plico" style="background:#fff8e8;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#f4900c"/></svg></div>
+      <div class="plb"><div class="pln">Dükkan — Sıcak Satış</div><div class="pld">Kadıköy'deki mağazamız</div></div>
+      <div class="pla">→</div>
+    </a>
+    <a href="#" class="pli">
+      <div class="plico" style="background:#fff3ee;"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="#ff6000"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="sans-serif">YS</text></svg></div>
+      <div class="plb"><div class="pln">Yemeksepeti</div><div class="pld">Hızlı kapı teslimatı</div></div>
+      <div class="pla">→</div>
+    </a>
+    <a href="#" class="pli">
+      <div class="plico" style="background:#f3eeff;"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="#5c3d8f"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="9" font-weight="bold" font-family="sans-serif">G</text></svg></div>
+      <div class="plb"><div class="pln">Getir</div><div class="pld">Hızlı kapı teslimatı</div></div>
+      <div class="pla">→</div>
+    </a>
+    <a href="#" class="pli">
+      <div class="plico" style="background:#fff3ee;"><svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="#ff6000"/><text x="12" y="16" text-anchor="middle" fill="white" font-size="6" font-weight="bold" font-family="sans-serif">TGo</text></svg></div>
+      <div class="plb"><div class="pln">Trendyol Go</div><div class="pld">Online market</div></div>
+      <div class="pla">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer class="ctsec fi" id="iletisim">
+  <div class="ctt">İletişim</div>
+  <div class="ctd">Sipariş, toplu alım veya işbirliği için bize ulaşın.</div>
+  <div class="ctlinks">
+    <a href="https://www.instagram.com/narhanee" class="ctl" target="_blank">
+      <div class="ctli" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg></div>
+      <div><div class="ctll">Instagram</div><div class="ctlv">@narhanee</div></div>
+    </a>
+    <a href="https://www.facebook.com/NarhaneGida" class="ctl" target="_blank">
+      <div class="ctli" style="background:#1877f2;"><svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+      <div><div class="ctll">Facebook</div><div class="ctlv">Narhane Gıda</div></div>
+    </a>
+    <a href="https://wa.me/905304288986" class="ctl" target="_blank">
+      <div class="ctli" style="background:#25d366;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+      <div><div class="ctll">WhatsApp</div><div class="ctlv">+90 530 428 89 86</div></div>
+    </a>
+  </div>
+  <div class="ctaddr">
+    <div style="color:rgba(255,255,255,.55);font-weight:700;margin-bottom:4px;">Narhane Gıda</div>
+    Kozvatağı Mah. Kaya Sultan Sok. 69A, Kadıköy / İstanbul<br>
+    narhaneofis@gmail.com
+  </div>
+  <div class="ftcopy">© 2025 Narhane Gıda — Tüm hakları saklıdır</div>
+</footer>
+
+<a href="https://wa.me/905304288986" class="wafab" target="_blank">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+  Sipariş Ver
+</a>
+
+<script>
+const track=document.getElementById('oSlider');
+const dotsEl=document.getElementById('oDots');
+const cards=track.querySelectorAll('.oc');
+let cur=0,auto;
+cards.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');d.onclick=()=>gt(i);dotsEl.appendChild(d);});
+function gt(n){cur=n;const w=cards[0].offsetWidth+12;track.style.transform=`translateX(-${cur*w}px)`;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));}
+function nx(){gt((cur+1)%cards.length);}
+auto=setInterval(nx,3200);
+let sx=0;
+track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;clearInterval(auto);},{passive:true});
+track.addEventListener('touchend',e=>{const dx=sx-e.changedTouches[0].clientX;if(Math.abs(dx)>40)dx>0?gt(Math.min(cur+1,cards.length-1)):gt(Math.max(cur-1,0));auto=setInterval(nx,3200);},{passive:true});
+
+function gf(cat,btn){document.querySelectorAll('.gcb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('.gcard').forEach(c=>{c.style.display=(cat==='all'||c.dataset.c===cat)?'':'none';});}
+
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('show');});},{threshold:0.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
